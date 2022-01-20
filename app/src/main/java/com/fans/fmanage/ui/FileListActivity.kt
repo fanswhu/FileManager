@@ -1,6 +1,8 @@
 package com.fans.fmanage.ui
 
 import android.animation.ObjectAnimator
+import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewStub
@@ -34,6 +36,8 @@ class FileListActivity : BaseActivity<ActivityFileListBinding, FileListViewModel
     override fun initEvent() {
         mViewModel.selectLiveData.observe(this) {
             Log.d(TAG, "选择了$it 目录")
+            intent.putExtra(FilePicker.KEY_DATA,it)
+            setResult(FilePicker.RESULT_CODE,intent)
             finish()
         }
         mViewModel.backLiveData.observe(this) {

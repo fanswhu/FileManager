@@ -1,5 +1,6 @@
 package com.fans.fmanage.core
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import com.fans.fmanage.ui.FileListActivity
@@ -10,13 +11,17 @@ class FilePicker private constructor() {
     private var pickParams: PickParams? = null
 
     companion object {
+        const val REQUEST_CODE = 10037
+        const val RESULT_CODE = 10037
+        const val KEY_DATA = "data"
         fun build(): Builder {
             return Builder()
         }
     }
 
     class Builder {
-        private val pickParams = PickParams(multiSupport = false, fileSupport = false,path = AppConfig.ROOT_PATH)
+        private val pickParams =
+            PickParams(multiSupport = false, fileSupport = false, path = AppConfig.ROOT_PATH)
 
         fun buildMultiSupport(): Builder {
             pickParams.multiSupport = true
@@ -27,7 +32,8 @@ class FilePicker private constructor() {
             pickParams.fileSupport = true
             return this
         }
-        fun buildPath(path:String):Builder{
+
+        fun buildPath(path: String): Builder {
             pickParams.path = path
             return this
         }
@@ -40,9 +46,9 @@ class FilePicker private constructor() {
 
     }
 
-    fun open(context: Context) {
-        val i = Intent(context, FileListActivity::class.java)
-        context.startActivity(i)
+    fun open(activity:Activity) {
+        val i = Intent(activity, FileListActivity::class.java)
+        activity.startActivityForResult(i, REQUEST_CODE)
     }
 
 

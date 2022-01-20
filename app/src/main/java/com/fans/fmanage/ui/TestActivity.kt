@@ -1,5 +1,6 @@
 package com.fans.fmanage.ui
 
+import android.content.Intent
 import android.util.Log
 import android.view.WindowManager
 import com.fans.fmanage.R
@@ -8,7 +9,7 @@ import com.fans.fmanage.databinding.ActivityMainBinding
 import com.fans.fmanage.utils.AppConfig
 import com.fans.fmanage.viewmodel.MainViewModel
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+class TestActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun initView() {
         Log.d(TAG,"initView")
@@ -42,5 +43,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun getLayout(): Int {
         return R.layout.activity_main
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.d(TAG,data?.getStringExtra(FilePicker.KEY_DATA)?:"")
     }
 }

@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FileManageKit">
         <activity android:name=".ui.FileListActivity"></activity>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
