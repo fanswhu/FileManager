@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fans.fmanage.R
+import com.fans.fmanage.core.FilePicker
 import com.fans.fmanage.databinding.ActivityFileListBinding
 import com.fans.fmanage.utils.AppConfig
 import com.fans.fmanage.viewmodel.FileListViewModel
@@ -45,6 +46,7 @@ class FileListActivity : BaseActivity<ActivityFileListBinding, FileListViewModel
         }
         mViewModel.stateLiveData.observe(this) {
             Log.d(TAG, "state$it")
+            mBinding.tvPath.text = mViewModel.mAdapter.mFileListInfo?.currentDirectory
             when (it) {
                 FileListViewModel.SHOW_LOADING -> showLoading()
                 FileListViewModel.SHOW_CONTENT -> showContent()

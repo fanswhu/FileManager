@@ -57,8 +57,8 @@ class FileListAdapter() : RecyclerView.Adapter<FileListAdapter.FileListViewHolde
         holder.binding.holder = holder
         holder.fileName.isSelected = fileInfo?.isSelected!!
         holder.fileName.text = fileInfo.fileName
-        if (fileInfo.isDirectory) holder.fileImg.setImageResource(R.mipmap.directory) else holder.fileImg.setImageResource(
-            R.mipmap.file
+        if (fileInfo.isDirectory) holder.fileImg.setImageResource(R.mipmap.directory1) else holder.fileImg.setImageResource(
+            R.mipmap.file2
         )
 
 
@@ -99,7 +99,7 @@ class FileListAdapter() : RecyclerView.Adapter<FileListAdapter.FileListViewHolde
     private fun clickFile() = { fileInfo: FileInfo, holder: FileListViewHolder ->
         holder.fileName.isSelected = !(holder.fileName.isSelected)
         clearFileState()
-        fileInfo.isSelected = !fileInfo.isSelected
+        fileInfo.isSelected = holder.fileName.isSelected
         notifyDataSetChanged()
     }
 
